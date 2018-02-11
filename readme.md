@@ -12,4 +12,9 @@
 	web 继承Servlet的实例
 	webapp 页面
 	web.xml 配置文件
+	
+	
+## 第一个版本, 简单实现上述功能;
+
+
 	 

@@ -2,13 +2,30 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
  
 	<servlet>
-		<servlet-name>date0</servlet-name>
-		<servlet-class>web.DateServlet</servlet-class>
+		<servlet-name>add</servlet-name>
+		<servlet-class>web.AddUserServlet</servlet-class>
 	</servlet>
-	
 	<servlet-mapping>
-		<servlet-name>date0</servlet-name>
-		<url-pattern>/date</url-pattern>
+		<servlet-name>add</servlet-name>
+		<url-pattern>/add</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	
+		<servlet-name>list</servlet-name>
+		<servlet-class>web.ListUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>list</servlet-name>
+		<url-pattern>/list</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	
+		<servlet-name>del</servlet-name>
+		<servlet-class>web.DelUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>del</servlet-name>
+		<url-pattern>/del</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
