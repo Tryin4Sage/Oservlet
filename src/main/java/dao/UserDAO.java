@@ -10,6 +10,7 @@ import entity.User;
 import util.DBUtils;
 
 public class UserDAO {
+	
 	/**
 	 * 添加用户
 	 * @param user
@@ -79,5 +80,33 @@ public class UserDAO {
 			DBUtils.closeConnection(conn);
 		}
 		return users;
+	}
+	/**
+	 * 查找用户
+	 * @param user.name
+	 */
+	public User findByUser(String name) {
+		Connection conn = null;
+		String sql = "select * from user where name=?";
+		try {
+			conn = DBUtils.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				User u = new User();
+				u.setId(rs.getInt("id"));
+				u.setName(rs.getString("name"));
+				u.setAge(rs.getInt("age"));
+				u.setPhone(rs.getString("phone"));
+				return u;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return null;
 	}
 }
