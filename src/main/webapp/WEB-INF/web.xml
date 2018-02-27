@@ -8,4 +8,13 @@
     <servlet-name>ActionServlet</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>ListFilter</display-name>
+    <filter-name>ListFilter</filter-name>
+    <filter-class>web.ListFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ListFilter</filter-name>
+    <url-pattern>/list.do</url-pattern>
+  </filter-mapping>
 </web-app>

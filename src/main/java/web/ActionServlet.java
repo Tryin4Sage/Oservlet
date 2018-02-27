@@ -1,7 +1,6 @@
 package web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,7 +17,6 @@ public class ActionServlet extends HttpServlet {
 		//常用的设置属性
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
 		UserDAO dao = new UserDAO();
 		
 		//获取请求地址
@@ -30,6 +28,7 @@ public class ActionServlet extends HttpServlet {
 			//获得响应数据集
 			List<User> users = dao.find();
 			//设置转发器并转发
+			if (users!=null)
 			request.setAttribute("users", users);
 			request.getRequestDispatcher("List.jsp").forward(request, response);
 		} else if("/add".equals(action)) {

@@ -1,6 +1,8 @@
-package web;
+package z_no_use;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.UserDAO;
 import entity.User;
 
-public class AddUserServlet extends HttpServlet{
+public class ListUserServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	@Override
@@ -18,21 +20,18 @@ public class AddUserServlet extends HttpServlet{
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
-		
-		String name = request.getParameter("name");
-		int age = Integer.parseInt(request.getParameter("age"));
-		String phone = request.getParameter("phone");
+		PrintWriter out = response.getWriter();
 		
 		UserDAO dao = new UserDAO();
-		User user = new User();
-		user.setAge(age);
-		user.setName(name);
-		user.setPhone(phone);
-		try {
-			dao.add(user);
-			response.sendRedirect("list");
-		} catch (Exception e) {
-			e.printStackTrace();
+		List<User> users = dao.find();
+		for (User user : users) {
+			out.println(user.getId());
+			out.println(user.getName());
+			out.println(user.getAge());
+			out.println(user.getPhone());
+			out.println("<p><a href='del?id="+user.getId()+"'>delete</a><p>");
+			out.println("<br>");
 		}
+		out.println("<p><a href='add.html'>ÃÌº””√ªß</a><p>");
 	}
 }
