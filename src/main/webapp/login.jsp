@@ -1,7 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@page import="java.util.Date"%>
 <%@page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <html>
 	<head>
 		<title>登陆</title>
@@ -13,21 +10,9 @@
 	<body>
 		<div id="wrap">
 			<div id="top_content">
-					<div id="header">
-						<div id="rightheader">
-							<p>
-								<%=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()) %>
-								<br />
-							</p>
-						</div>
-						<div id="topheader">
-							<h1 id="title">
-								<a href="#">努力</a>
-							</h1>
-						</div>
-						<div id="navigation">
-						</div>
-					</div>
+			
+				<%@include file="header.jsp" %>
+					
 				<div id="content">
 					<p id="whereami">
 					</p>
@@ -43,9 +28,7 @@
 								</td>
 								<td valign="middle" align="left">
 									<input type="text" class="inputgri" name="name" />
-									<%
-										String msg = (String)request.getAttribute("login_fil");
-									%><span style="color: red; font-size: 24px;"><%=msg==null?"":msg%></span>
+									<span style="color: red; font-size: 24px;">${login_fil }</span>
 								</td>
 							</tr>
 							<tr>

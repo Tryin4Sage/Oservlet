@@ -41,7 +41,7 @@ public class ActionServlet extends HttpServlet {
 			User user = new User();
 			user.setName(name);
 			user.setAge(Integer.parseInt(age));
-			user.setName(phone);
+			user.setPhone(phone);
 			
 			//添加,并重定向
 			dao.add(user);
@@ -57,7 +57,7 @@ public class ActionServlet extends HttpServlet {
 			String phone = request.getParameter("phone");
 			User user = dao.findByUser(name);
 			
-			if (user!=null && user.getPhone().equals(phone)) {
+			if (user!=null && phone.equals(user.getPhone())) {
 				response.sendRedirect("list.do");
 			} else {
 				request.setAttribute("user_err", "用户名或密码错误");

@@ -1,7 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@page import="java.util.Date"%>
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <html>
 	<head>
 		<title>添加用户</title>
@@ -13,21 +11,9 @@
 	<body>
 		<div id="wrap">
 			<div id="top_content">
-					<div id="header">
-						<div id="rightheader">
-							<p>
-								<%=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()) %>
-								<br />
-							</p>
-						</div>
-						<div id="topheader">
-							<h1 id="title">
-								<a href="#">奋斗</a>
-							</h1>
-						</div>
-						<div id="navigation">
-						</div>
-					</div>
+			
+				<%@include file="header.jsp" %>	
+					
 				<div id="content">
 					<p id="whereami">
 					</p>

@@ -8,6 +8,7 @@
     <servlet-name>ActionServlet</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
   <filter>
     <display-name>ListFilter</display-name>
     <filter-name>ListFilter</filter-name>

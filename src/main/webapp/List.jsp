@@ -1,7 +1,5 @@
-<%@page import="java.text.SimpleDateFormat"%>
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
-<%@ page import="java.util.*,entity.*" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 	<head>
 		<title>用户管理</title>
@@ -11,21 +9,9 @@
 	<body>
 		<div id="wrap">
 			<div id="top_content"> 
-				<div id="header">
-					<div id="rightheader">
-						<p>
-							<%=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()) %>
-							<br />
-						</p>
-					</div>
-					<div id="topheader">
-						<h1 id="title">
-							<a href="#">团结</a>
-						</h1>
-					</div>
-					<div id="navigation">
-					</div>
-				</div>
+			
+				<%@include file="header.jsp" %>
+				
 				<div id="content">
 					<p id="whereami">
 					</p>
@@ -40,26 +26,22 @@
 							<td>Phone</td>
 							<td>操作</td>
 						</tr>
-						<%
-							List<User> users = (List<User>)request.getAttribute("users");
-							for(int i=0; i< users.size(); i++){
-								User user = users.get(i);
-						%>
-						<tr class="row<%=i%2+1 %>">
-							<td><%=user.getId() %></td>
-							<td><%=user.getName() %></td>
-							<td><%=user.getAge()%></td>
-							<td><%=user.getPhone() %></td>
-							<td><a href="del.do?id=<%=user.getId()%>" 
-							 onclick="return confirm('确认删除<%=user.getName()%>吗?');">delete</a>&nbsp;</td>
+						<c:forEach items="${users }" var="user" varStatus="i">
+						<tr class="row${i%2+1 }">
+							<td>${user.id }</td>
+							<td>${user.name }</td>
+							<td>${user.age }</td>
+							<td>${user.phone }</td>
+							<td><a href="del.do?id=${user.id }" 
+							 onclick="return confirm('确认删除<${user.name }吗?');">delete</a>&nbsp;</td>
 						</tr>
-						<%
-							}
-						%>
+						</c:forEach>
 					</table>
 					<p>
 						<input type="button" class="button" value="添加用户" 
 						onclick="location='add.jsp'"/>
+						<input type="button" class="button" value="测试登陆" 
+						onclick="location='login.jsp'"/>
 					</p>
 				</div>
 			</div>
